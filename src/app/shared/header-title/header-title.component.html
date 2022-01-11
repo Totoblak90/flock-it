@@ -5,6 +5,12 @@
   </div>
   <div class="user">
     <img src="assets/no-image.png" alt="Una persona" />
-    <span>Usuario</span>
+    <ng-container *ngIf="user; else notUserTemplate">
+      <span>{{ user.name }}</span>
+      <span color="medium ion-margin-start" (click)="logout()">X</span>
+    </ng-container>
+    <ng-template #notUserTemplate>
+      <span>Usuario</span>
+    </ng-template>
   </div>
 </div>

@@ -1,1 +1,83 @@
-<h1>Login works!</h1>
+<ion-content class="login-main ion-padding">
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col
+        class="background-image ion-no-padding"
+        size="6"
+        sizeMd="4"
+        sizeLg="3"
+      >
+        <img src="assets/territorio-argentino.png" alt="" />
+      </ion-col>
+      <ion-col
+        class="card-container ion-no-padding"
+        size="6"
+        sizeMd="4"
+        sizeLg="3"
+      >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="ion-text-center"
+              >¡Bienvenido!</ion-card-title
+            >
+          </ion-card-header>
+
+          <ion-card-content>
+            <form
+              [formGroup]="loginForm"
+              autocomplete="off"
+              (submit)="submitForm()"
+            >
+              <div class="card-inputs">
+                <ion-input
+                  type="text"
+                  placeholder="Email"
+                  formControlName="email"
+                ></ion-input>
+                <span
+                  color="danger"
+                  *ngIf="loginForm.controls.email.errors?.required && loginForm.controls.email.touched"
+                >
+                  Este dato es requerido
+                </span>
+                <span
+                  color="danger"
+                  *ngIf="loginForm.controls.email.errors?.pattern && loginForm.controls.email.touched"
+                >
+                  El formato del email es inválido
+                </span>
+                <ion-input
+                  type="password"
+                  placeholder="Constraseña"
+                  formControlName="password"
+                ></ion-input>
+                <span
+                  color="danger"
+                  *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched"
+                >
+                  Este dato es requerido
+                </span>
+                <span
+                  color="danger"
+                  *ngIf="loginForm.controls.password.errors?.minlength && loginForm.controls.password.touched"
+                >
+                  Debe tener al menos 5 caractéres
+                </span>
+              </div>
+              <div class="card-actions">
+                <ion-button
+                  type="submit"
+                  expand="block"
+                  fill="clear"
+                  shape="round"
+                >
+                  Iniciar Sesión
+                </ion-button>
+              </div>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

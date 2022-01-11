@@ -29,7 +29,8 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
-              }
+              },
+              { "glob": "db.json", "input": "./", "output": "./assets/db/" }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
             "scripts": [],
@@ -122,10 +123,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         },
         "e2e": {
