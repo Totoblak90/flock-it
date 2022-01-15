@@ -1,0 +1,9 @@
+.input-group {
+  display: flex;
+  input {
+    flex-grow: 0.9;
+  }
+  .input-type-selector {
+    flex-grow: 0.1;
+  }
+}

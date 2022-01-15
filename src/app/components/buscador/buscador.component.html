@@ -1,0 +1,18 @@
+<div class="input-group">
+  <ion-input
+    #buscadorProvinciasPorNombre
+    *ngIf="inputType === 'search'"
+    [type]="inputType"
+    placeholder="Buscar por provincias"
+    (change)="buscarProvinciasPorNombre(buscadorProvinciasPorNombre.value)"
+  ></ion-input>
+  <ion-select
+    #selectInput
+    class="input-type-selector"
+    (onChange)="selectInputType(selectInput)"
+    value="search"
+  >
+    <ion-select-option value="search">Provincias</ion-select-option>
+    <ion-select-option value="number">Latitud y longitud</ion-select-option>
+  </ion-select>
+</div>

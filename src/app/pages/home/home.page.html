@@ -1,3 +1,9 @@
 <ion-content class="home-main ion-padding">
-  <h1>¡Bienvenido!</h1>
+  <h1>¡Bienvenido! {{ user?.name }}</h1>
+
+  <app-buscador
+    (onBuscadorProvinciasPorNombre)="buscarProvinciasPorNombre($event)"
+  ></app-buscador>
+
+  <app-tabla [provincias]="provincias"></app-tabla>
 </ion-content>

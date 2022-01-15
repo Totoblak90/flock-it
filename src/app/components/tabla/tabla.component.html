@@ -1,0 +1,19 @@
+<div class="table-main">
+  <table *ngIf="isSearchingByProvincia">
+    <tr>
+      <th>Nombre</th>
+      <th>Latitud</th>
+      <th>Longitud</th>
+    </tr>
+    <tr *ngFor="let provincia of provincias">
+      <td>{{ provincia.nombre }}</td>
+      <td>
+        {{ provincia.centroide.lat | number: '2.0-5' }}
+      </td>
+      <td>
+        {{ provincia.centroide.lon | number: '2.0-5' }}
+      </td>
+    </tr>
+  </table>
+</div>
+
