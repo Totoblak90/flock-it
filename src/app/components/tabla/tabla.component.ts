@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Provincia } from '../../interfaces/provincias';
+import { Provincia, Ubicacion } from '../../interfaces/provincias';
 
 @Component({
   selector: 'app-tabla',
@@ -8,7 +8,9 @@ import { Provincia } from '../../interfaces/provincias';
 })
 export class TablaComponent implements OnInit {
   @Input() public provincias: Provincia[];
-  @Input() public isSearchingByProvincia: boolean = true;
+  @Input() public ubicacion: Ubicacion;
+  @Input() public isSearchingByProvincia: boolean;
+  @Input() public isSearchingByUbicacion: boolean;
 
   constructor() {}
 

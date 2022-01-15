@@ -47,7 +47,7 @@ export class GeorefService {
     longitud: number
   ): Observable<GetPorUbicacionRes> {
     return this.httpClient.get<GetPorUbicacionRes>(
-      `${environment.api_base_url}/ubicacion?lat=-${latitud}&lon=${longitud}`
+      `${environment.api_base_url}/ubicacion?lat=-${latitud}&lon=-${longitud}`
     );
   }
 }

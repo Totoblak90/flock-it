@@ -1,5 +1,6 @@
 <div class="table-main">
-  <table *ngIf="isSearchingByProvincia">
+  <!-- Tabla para buscar por provincia -->
+  <table *ngIf="isSearchingByProvincia && provincias">
     <tr>
       <th>Nombre</th>
       <th>Latitud</th>
@@ -8,12 +9,25 @@
     <tr *ngFor="let provincia of provincias">
       <td>{{ provincia.nombre }}</td>
       <td>
-        {{ provincia.centroide.lat | number: '2.0-5' }}
+        {{ provincia.centroide.lat | number: "2.0-5" }}
       </td>
       <td>
-        {{ provincia.centroide.lon | number: '2.0-5' }}
+        {{ provincia.centroide.lon | number: "2.0-5" }}
       </td>
     </tr>
   </table>
-</div>
 
+  <!-- Tabla para buscar por ubicación -->
+  <table *ngIf="isSearchingByUbicacion && ubicacion">
+    <tr>
+      <th *ngIf="ubicacion.provincia.nombre">Provincia</th>
+      <th *ngIf="ubicacion.municipio.nombre">Municipio</th>
+      <th *ngIf="ubicacion.departamento.nombre">Departamento</th>
+    </tr>
+    <tr>
+      <td *ngIf="ubicacion.provincia.nombre">{{ ubicacion.provincia.nombre }}</td>
+      <td *ngIf="ubicacion.municipio.nombre">{{ ubicacion.municipio.nombre }}</td>
+      <td *ngIf="ubicacion.departamento.nombre">{{ ubicacion.departamento.nombre }}</td>
+    </tr>
+  </table>
+</div>

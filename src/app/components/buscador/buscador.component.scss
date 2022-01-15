@@ -1,8 +1,18 @@
 .input-group {
   display: flex;
-  input {
+  ion-input {
     flex-grow: 0.9;
   }
+  .ubicacion-container {
+    flex-grow: 0.9;
+    display: flex;
+    justify-content: space-between;
+    & ion-input {
+      flex-grow: 0.4;
+    }
+  }
+  // input {
+  // }
   .input-type-selector {
     flex-grow: 0.1;
   }

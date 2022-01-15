@@ -1,18 +1,28 @@
 <div class="input-group">
+  <!-- Buscador por provincia -->
   <ion-input
     #buscadorProvinciasPorNombre
-    *ngIf="inputType === 'search'"
-    [type]="inputType"
+    *ngIf="tipoDeBuscador === 'provincias'"
+    type="search"
     placeholder="Buscar por provincias"
-    (change)="buscarProvinciasPorNombre(buscadorProvinciasPorNombre.value)"
+    (ionChange)="buscarProvinciasPorNombre(buscadorProvinciasPorNombre.value)"
   ></ion-input>
+
+  <!-- Buscar por ubicación -->
+  <div class="ubicacion-container" *ngIf="tipoDeBuscador === 'ubicacion'">
+    <ion-input #buscadorPorLatitud type="number" placeholder="Latitud" (ionChange)="buscarProvinciasPorUbicacion(buscadorPorLatitud.value, 'latitud')"></ion-input>
+    <ion-input #buscadorPorLongitud type="number" placeholder="Longitud" (ionChange)="buscarProvinciasPorUbicacion(buscadorPorLongitud.value, 'longitud')"></ion-input>
+  </div>
+
+  <!-- Manejo el tipo de buscador que quiero que aparezca -->
   <ion-select
     #selectInput
     class="input-type-selector"
-    (onChange)="selectInputType(selectInput)"
-    value="search"
+    (ionChange)="selectInputType(selectInput.value)"
+    value="provincias"
+    interface="popover"
   >
-    <ion-select-option value="search">Provincias</ion-select-option>
-    <ion-select-option value="number">Latitud y longitud</ion-select-option>
+    <ion-select-option value="provincias">Provincias</ion-select-option>
+    <ion-select-option value="ubicacion">Latitud y longitud</ion-select-option>
   </ion-select>
 </div>
