@@ -2,16 +2,18 @@
   <!-- Tabla para buscar por provincia -->
   <table *ngIf="isSearchingByProvincia && provincias">
     <tr>
-      <th>Nombre</th>
-      <th>Latitud</th>
-      <th>Longitud</th>
+      <th class="ion-padding">Nombre</th>
+      <th class="ion-padding">Latitud</th>
+      <th class="ion-padding">Longitud</th>
     </tr>
     <tr *ngFor="let provincia of provincias">
-      <td>{{ provincia.nombre }}</td>
-      <td>
+      <td class="ion-padding" [class]="provincia.class">
+        {{ provincia.nombre }}
+      </td>
+      <td class="ion-padding" [class]="provincia.class">
         {{ provincia.centroide.lat | number: "2.0-5" }}
       </td>
-      <td>
+      <td class="ion-padding" [class]="provincia.class">
         {{ provincia.centroide.lon | number: "2.0-5" }}
       </td>
     </tr>
@@ -20,14 +22,34 @@
   <!-- Tabla para buscar por ubicación -->
   <table *ngIf="isSearchingByUbicacion && ubicacion">
     <tr>
-      <th *ngIf="ubicacion.provincia.nombre">Provincia</th>
-      <th *ngIf="ubicacion.municipio.nombre">Municipio</th>
-      <th *ngIf="ubicacion.departamento.nombre">Departamento</th>
+      <th class="ion-padding" *ngIf="ubicacion.provincia.nombre">Provincia</th>
+      <th class="ion-padding" *ngIf="ubicacion.municipio.nombre">Municipio</th>
+      <th class="ion-padding" *ngIf="ubicacion.departamento.nombre">
+        Departamento
+      </th>
     </tr>
     <tr>
-      <td *ngIf="ubicacion.provincia.nombre">{{ ubicacion.provincia.nombre }}</td>
-      <td *ngIf="ubicacion.municipio.nombre">{{ ubicacion.municipio.nombre }}</td>
-      <td *ngIf="ubicacion.departamento.nombre">{{ ubicacion.departamento.nombre }}</td>
+      <td
+        class="ion-padding"
+        [class]="ubicacion.class"
+        *ngIf="ubicacion.provincia.nombre"
+      >
+        {{ ubicacion.provincia.nombre }}
+      </td>
+      <td
+        class="ion-padding"
+        [class]="ubicacion.class"
+        *ngIf="ubicacion.municipio.nombre"
+      >
+        {{ ubicacion.municipio.nombre }}
+      </td>
+      <td
+        class="ion-padding"
+        [class]="ubicacion.class"
+        *ngIf="ubicacion.departamento.nombre"
+      >
+        {{ ubicacion.departamento.nombre }}
+      </td>
     </tr>
   </table>
 </div>

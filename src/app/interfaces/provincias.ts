@@ -10,6 +10,7 @@ export interface Provincia {
   centroide: GeoLocacion;
   id: string;
   nombre: string;
+  class?: string;
 }
 
 export interface GeoLocacion {
@@ -33,6 +34,7 @@ export interface Ubicacion {
   departamento: UbicacionMunicipioProvinciaDepartamento;
   municipio: UbicacionMunicipioProvinciaDepartamento;
   provincia: UbicacionMunicipioProvinciaDepartamento;
+  class?: string;
 }
 
 export interface UbicacionMunicipioProvinciaDepartamento {
