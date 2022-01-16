@@ -1,4 +1,4 @@
-<ion-content class="home-main ion-padding">
+<ion-content class="home-main ion-padding animate__animated animate__fadeIn">
   <h1>¡Bienvenido! {{ user?.name }}</h1>
 
   <app-buscador
@@ -9,8 +9,8 @@
   ></app-buscador>
 
   <app-tabla
-    [provinciasClasses]="provincias"
-    [ubicacionClasses]="ubicacion"
+    [provincias]="provincias"
+    [ubicacion]="ubicacion"
     [isSearchingByProvincia]="isSearchingByProvincia"
     [isSearchingByUbicacion]="isSearchingByUbicacion"
   ></app-tabla>

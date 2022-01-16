@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Provincia, Ubicacion } from '../../interfaces/provincias';
 
 @Component({
@@ -6,33 +6,25 @@ import { Provincia, Ubicacion } from '../../interfaces/provincias';
   templateUrl: './tabla.component.html',
   styleUrls: ['./tabla.component.scss'],
 })
-export class TablaComponent implements OnInit {
-  @Input() public set provinciasClasses(provincias: Provincia[]) {
-    if (provincias.length && this.provincias) {
-      provincias.forEach((provincia, index) => {
-        index % 2 === 0
-          ? (provincia.class = 'primary')
-          : (provincia.class = 'secondary');
-
-        this.provincias.push(provincia);
-      });
-    }
-  }
-  @Input() public set ubicacionClasses(ubicacion: Ubicacion) {
-    if (ubicacion) {
-      +ubicacion.provincia.id % 2 === 0
-        ? (ubicacion.class = 'primary')
-        : (ubicacion.class = 'secondary');
-      this.ubicacion = ubicacion;
-    }
-  }
+export class TablaComponent {
+  @Input() public provincias: Provincia[] = [];
+  @Input() public ubicacion: Ubicacion;
   @Input() public isSearchingByProvincia: boolean;
   @Input() public isSearchingByUbicacion: boolean;
 
-  public provincias: Provincia[] = [];
-  public ubicacion: Ubicacion;
+  public noUbicacionMessage: string =
+    'No encontramos ningún resultado. Probá escribiendo otros valores!';
 
-  constructor() {}
-
-  ngOnInit() {}
+  public checkUbicacionisEmpty(): boolean {
+    return (
+      this.isSearchingByUbicacion &&
+      this.ubicacion &&
+      !this.ubicacion?.departamento?.id &&
+      !this.ubicacion?.departamento?.nombre &&
+      !this.ubicacion?.municipio?.id &&
+      !this.ubicacion?.municipio?.nombre &&
+      !this.ubicacion?.provincia?.id &&
+      !this.ubicacion?.provincia?.nombre
+    );
+  }
 }

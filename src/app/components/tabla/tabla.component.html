@@ -1,6 +1,9 @@
 <div class="table-main">
   <!-- Tabla para buscar por provincia -->
-  <table *ngIf="isSearchingByProvincia && provincias">
+  <table
+    *ngIf="isSearchingByProvincia && provincias"
+    class="animate__animated animate__fadeIn"
+  >
     <tr>
       <th class="ion-padding">Nombre</th>
       <th class="ion-padding">Latitud</th>
@@ -20,36 +23,54 @@
   </table>
 
   <!-- Tabla para buscar por ubicación -->
-  <table *ngIf="isSearchingByUbicacion && ubicacion">
-    <tr>
-      <th class="ion-padding" *ngIf="ubicacion.provincia.nombre">Provincia</th>
-      <th class="ion-padding" *ngIf="ubicacion.municipio.nombre">Municipio</th>
-      <th class="ion-padding" *ngIf="ubicacion.departamento.nombre">
-        Departamento
-      </th>
-    </tr>
-    <tr>
-      <td
-        class="ion-padding"
-        [class]="ubicacion.class"
-        *ngIf="ubicacion.provincia.nombre"
-      >
-        {{ ubicacion.provincia.nombre }}
-      </td>
-      <td
-        class="ion-padding"
-        [class]="ubicacion.class"
-        *ngIf="ubicacion.municipio.nombre"
-      >
-        {{ ubicacion.municipio.nombre }}
-      </td>
-      <td
-        class="ion-padding"
-        [class]="ubicacion.class"
-        *ngIf="ubicacion.departamento.nombre"
-      >
-        {{ ubicacion.departamento.nombre }}
-      </td>
-    </tr>
-  </table>
+  <h3
+    *ngIf="isSearchingByUbicacion && !ubicacion"
+    class="no-ubicacion ion-margin animate__animated animate__fadeIn"
+  >
+    Escribí los datos para obtener un resultado
+  </h3>
+
+  <ng-container *ngIf="checkUbicacionisEmpty(); else elseTemplate">
+    <h3 class="no-ubicacion animate__animated animate__fadeIn">
+      {{ noUbicacionMessage }}
+    </h3>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <table class="animate__animated animate__fadeIn">
+      <tr>
+        <th class="ion-padding" *ngIf="ubicacion.provincia.nombre">
+          Provincia
+        </th>
+        <th class="ion-padding" *ngIf="ubicacion.municipio.nombre">
+          Municipio
+        </th>
+        <th class="ion-padding" *ngIf="ubicacion.departamento.nombre">
+          Departamento
+        </th>
+      </tr>
+      <tr>
+        <td
+          class="ion-padding"
+          [class]="ubicacion.class"
+          *ngIf="ubicacion.provincia.nombre"
+        >
+          {{ ubicacion.provincia.nombre }}
+        </td>
+        <td
+          class="ion-padding"
+          [class]="ubicacion.class"
+          *ngIf="ubicacion.municipio.nombre"
+        >
+          {{ ubicacion.municipio.nombre }}
+        </td>
+        <td
+          class="ion-padding"
+          [class]="ubicacion.class"
+          *ngIf="ubicacion.departamento.nombre"
+        >
+          {{ ubicacion.departamento.nombre }}
+        </td>
+      </tr>
+    </table>
+  </ng-template>
 </div>

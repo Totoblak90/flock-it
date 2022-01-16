@@ -11,7 +11,10 @@ import {
   Ubicacion,
 } from '../../interfaces/provincias';
 import { AlertService } from '../../services/alert.service';
-import { BuscadorOptions, parametrosParaBuscarPorUbicacion } from '../../components/interfaces/buscador';
+import {
+  BuscadorOptions,
+  parametrosParaBuscarPorUbicacion,
+} from '../../components/interfaces/buscador';
 
 @Component({
   selector: 'app-home',
@@ -50,18 +53,31 @@ export class HomePage implements OnInit, OnDestroy {
         next: (res) => {
           this.getProvinciasRes = res;
           this.provincias = res.provincias;
-          this.provincias.sort((a, b) => {
-            if (a.nombre > b.nombre) {
-              return 1;
-            } else if (a.nombre < b.nombre) {
-              return -1;
-            } else {
-              return 0;
-            }
-          });
+          this.sortProvincias();
+          this.addClassesToProvincias();
         },
         error: (err) => this.alertService.noConectionAlert(err),
       });
+  }
+
+  private sortProvincias(): void {
+    this.provincias.sort((a, b) => {
+      if (a.nombre > b.nombre) {
+        return 1;
+      } else if (a.nombre < b.nombre) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  private addClassesToProvincias(): void {
+    this.provincias.forEach((provincia, index) => {
+      index % 2 === 0
+        ? (provincia.class = 'primary')
+        : (provincia.class = 'secondary');
+    });
   }
 
   private getProvinciasByName(term: string): void {
@@ -85,6 +101,12 @@ export class HomePage implements OnInit, OnDestroy {
         },
         error: (err) => this.alertService.noConectionAlert(err),
       });
+  }
+
+  private setUbicacionClasses(): void {
+    +this.ubicacion.provincia.id % 2 === 0
+      ? (this.ubicacion.class = 'primary')
+      : (this.ubicacion.class = 'secondary');
   }
 
   public cambiarTipoDeTabla(value: BuscadorOptions) {
