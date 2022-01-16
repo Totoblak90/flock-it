@@ -2,6 +2,7 @@
   <h1>¡Bienvenido! {{ user?.name }}</h1>
 
   <app-buscador
+  class="ion-margin"
     (onBuscadorProvinciasPorNombre)="buscarProvinciasPorNombre($event)"
     (onBuscarPorUbicacion)="buscarPorUbicacion($event)"
     (isSearchingBy)="cambiarTipoDeTabla($event)"

@@ -4,14 +4,29 @@
     #buscadorProvinciasPorNombre
     *ngIf="tipoDeBuscador === 'provincias'"
     type="search"
+    id="buscadorPorProvincia"
     placeholder="Buscar por provincias"
     (ionChange)="buscarProvinciasPorNombre(buscadorProvinciasPorNombre.value)"
   ></ion-input>
 
   <!-- Buscar por ubicación -->
   <div class="ubicacion-container" *ngIf="tipoDeBuscador === 'ubicacion'">
-    <ion-input #buscadorPorLatitud type="number" placeholder="Latitud" (ionChange)="buscarProvinciasPorUbicacion(buscadorPorLatitud.value, 'latitud')"></ion-input>
-    <ion-input #buscadorPorLongitud type="number" placeholder="Longitud" (ionChange)="buscarProvinciasPorUbicacion(buscadorPorLongitud.value, 'longitud')"></ion-input>
+    <ion-input
+      #buscadorPorLatitud
+      type="number"
+      placeholder="Latitud"
+      (ionChange)="
+        buscarProvinciasPorUbicacion(buscadorPorLatitud.value, 'latitud')
+      "
+    ></ion-input>
+    <ion-input
+      #buscadorPorLongitud
+      type="number"
+      placeholder="Longitud"
+      (ionChange)="
+        buscarProvinciasPorUbicacion(buscadorPorLongitud.value, 'longitud')
+      "
+    ></ion-input>
   </div>
 
   <!-- Manejo el tipo de buscador que quiero que aparezca -->
