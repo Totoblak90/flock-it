@@ -10,14 +10,14 @@
       <th class="ion-padding">Longitud</th>
     </tr>
     <tr *ngFor="let provincia of provincias">
-      <td class="ion-padding" [class]="provincia.class">
-        {{ provincia.nombre }}
+      <td class="ion-padding" [class]="provincia?.class">
+        {{ provincia?.nombre }}
+      </td>
+      <td class="ion-padding" [class]="provincia?.class">
+        {{ provincia?.centroide?.lat | number: "2.0-5" }}
       </td>
       <td class="ion-padding" [class]="provincia.class">
-        {{ provincia.centroide.lat | number: "2.0-5" }}
-      </td>
-      <td class="ion-padding" [class]="provincia.class">
-        {{ provincia.centroide.lon | number: "2.0-5" }}
+        {{ provincia?.centroide?.lon | number: "2.0-5" }}
       </td>
     </tr>
   </table>
@@ -38,13 +38,13 @@
   <ng-template #elseTemplate>
     <table class="animate__animated animate__fadeIn">
       <tr>
-        <th class="ion-padding" *ngIf="ubicacion.provincia.nombre">
+        <th class="ion-padding" *ngIf="ubicacion?.provincia?.nombre">
           Provincia
         </th>
-        <th class="ion-padding" *ngIf="ubicacion.municipio.nombre">
+        <th class="ion-padding" *ngIf="ubicacion?.municipio?.nombre">
           Municipio
         </th>
-        <th class="ion-padding" *ngIf="ubicacion.departamento.nombre">
+        <th class="ion-padding" *ngIf="ubicacion?.departamento?.nombre">
           Departamento
         </th>
       </tr>
@@ -52,23 +52,23 @@
         <td
           class="ion-padding"
           [class]="ubicacion.class"
-          *ngIf="ubicacion.provincia.nombre"
+          *ngIf="ubicacion?.provincia?.nombre"
         >
-          {{ ubicacion.provincia.nombre }}
+          {{ ubicacion?.provincia?.nombre }}
         </td>
         <td
           class="ion-padding"
           [class]="ubicacion.class"
-          *ngIf="ubicacion.municipio.nombre"
+          *ngIf="ubicacion?.municipio?.nombre"
         >
-          {{ ubicacion.municipio.nombre }}
+          {{ ubicacion?.municipio?.nombre }}
         </td>
         <td
           class="ion-padding"
           [class]="ubicacion.class"
-          *ngIf="ubicacion.departamento.nombre"
+          *ngIf="ubicacion?.departamento?.nombre"
         >
-          {{ ubicacion.departamento.nombre }}
+          {{ ubicacion?.departamento?.nombre }}
         </td>
       </tr>
     </table>

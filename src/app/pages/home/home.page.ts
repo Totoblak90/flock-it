@@ -61,7 +61,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   private sortProvincias(): void {
-    this.provincias.sort((a, b) => {
+    this.provincias?.sort((a, b) => {
       if (a.nombre > b.nombre) {
         return 1;
       } else if (a.nombre < b.nombre) {
@@ -73,7 +73,7 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   private addClassesToProvincias(): void {
-    this.provincias.forEach((provincia, index) => {
+    this.provincias?.forEach((provincia, index) => {
       index % 2 === 0
         ? (provincia.class = 'primary')
         : (provincia.class = 'secondary');
@@ -98,13 +98,14 @@ export class HomePage implements OnInit, OnDestroy {
         next: (res) => {
           this.getUbicacionRes = res;
           this.ubicacion = res?.ubicacion;
+          this.setUbicacionClasses();
         },
         error: (err) => this.alertService.noConectionAlert(err),
       });
   }
 
   private setUbicacionClasses(): void {
-    +this.ubicacion.provincia.id % 2 === 0
+    +this.ubicacion.provincia?.id % 2 === 0
       ? (this.ubicacion.class = 'primary')
       : (this.ubicacion.class = 'secondary');
   }

@@ -73,9 +73,7 @@ export class LoginPage implements OnInit {
     const loggedUser = new User(user.email, user.name, user.password);
     this.authService.setUser(loggedUser);
     if (this.authService.getUser()) {
-      setTimeout(() => {
         this.navController.navigateForward('/home');
-      });
     } else {
       // Nunca va a caer acá pero bueno ;)))))))
       this.presentToast('Error inesperado, por favor recargá la página');
