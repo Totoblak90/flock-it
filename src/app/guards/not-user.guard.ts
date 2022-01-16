@@ -6,9 +6,7 @@ import {
   Route,
   RouterStateSnapshot,
   UrlSegment,
-  UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { User } from '../models/User';
 

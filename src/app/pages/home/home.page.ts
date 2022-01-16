@@ -80,10 +80,8 @@ export class HomePage implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (res) => {
-          console.log(res)
           this.getUbicacionRes = res;
           this.ubicacion = res?.ubicacion;
-          console.log(this.ubicacion);
         },
         error: (err) => this.alertService.noConectionAlert(err),
       });
